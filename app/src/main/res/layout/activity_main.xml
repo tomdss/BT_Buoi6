@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlue"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/dp8"
+            >
+
+            <EditText
+                android:paddingLeft="@dimen/dp12"
+                android:id="@+id/edt_timkiem"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/size14"
+                android:inputType="textWebEditText"
+
+                />
+
+            <ImageView
+                android:id="@+id/im_timkiem"
+                android:layout_weight="8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search_black_24dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp8"
+            >
+
+            <TextView
+                android:id="@+id/tv_tintuc"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/tin_t_c"
+                android:gravity="center"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/size12"
+                />
+
+            <TextView
+                android:id="@+id/tv_daluu"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/l_u"
+                android:gravity="center"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/size12"
+                />
+
+            <TextView
+                android:id="@+id/tv_yeuthich"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/y_u_th_ch"
+                android:gravity="center"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/size12"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv_tintuc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideInset"
+
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        />
+
+
+
+
+
+</LinearLayout>

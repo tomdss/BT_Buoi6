@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BT_Buoi6</string>
+    <string name="y_u_th_ch">YÊU THÍCH</string>
+    <string name="l_u">ĐÃ LƯU</string>
+    <string name="tin_t_c">TIN TỨC</string>
+    <string name="title">Title</string>
+    <string name="desc">Desc</string>
+    <string name="pubdate">Pubdate</string>
+</resources>
