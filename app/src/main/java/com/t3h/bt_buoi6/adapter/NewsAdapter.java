@@ -8,25 +8,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.annotation.GlideOption;
 import com.bumptech.glide.request.RequestOptions;
+import com.t3h.bt_buoi6.MainActivity;
 import com.t3h.bt_buoi6.R;
+import com.t3h.bt_buoi6.WebviewActivity;
 import com.t3h.bt_buoi6.model.News;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.FaceHolder>{
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.FaceHolder>  {
 
     private LayoutInflater inflater;//anh xa item_face thanh 1 view
-    private ArrayList<News> data;
+    private List<News> data;
     private FaceItemListener listener;
 
-    public NewsAdapter(Context context, ArrayList<News> data) {
+    public NewsAdapter(Context context, List<News> data) {
         this.data = data;
         inflater=LayoutInflater.from(context);
     }
@@ -49,25 +53,25 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.FaceHolder>{
 
         News f =data.get(position);
         faceHolder.bindData(f);
-//        faceHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(listener!=null){
-//                    listener.onClick(position);
-//                }
-//            }
-//        });
-//
-//        faceHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//
-//                if(listener!=null){
-//                    listener.onLongClick(position);
-//                }
-//                return true;
-//            }
-//        });
+        faceHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener!=null){
+                    listener.onClick(position);
+                }
+            }
+        });
+
+        faceHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                if(listener!=null){
+                    listener.onLongClick(position);
+                }
+                return true;
+            }
+        });
 
     }
 
@@ -75,6 +79,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.FaceHolder>{
     public int getItemCount() {
         return data.size();
     }
+
 
     public class FaceHolder extends RecyclerView.ViewHolder {
         private ImageView ivNews;
@@ -99,19 +104,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.FaceHolder>{
             tvDesc.setText(news.getDesc());
 
 
+
             Glide.with(ivNews)
                     .load(news.getImage())
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .into(ivNews);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(news.getLink()));
-                    itemView.getContext().startActivity(intent);
-                }
-            });
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(Intent.ACTION_VIEW);
+//                    intent.setData(Uri.parse(news.getLink()));
+//                    itemView.getContext().startActivity(intent);
+
+
+
+//                }
+//            });
 
         }
 
@@ -121,6 +130,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.FaceHolder>{
     public interface FaceItemListener{
         void onClick(int position);
         void onLongClick(int position);
+
     }
 
 }

@@ -1,5 +1,8 @@
 package com.t3h.bt_buoi6.parser;
 
+import android.widget.Toast;
+
+import com.t3h.bt_buoi6.MainActivity;
 import com.t3h.bt_buoi6.model.News;
 import com.t3h.bt_buoi6.utils.Constances;
 
@@ -42,7 +45,7 @@ public class XMLParser extends DefaultHandler {
                 item.setTitle(builder.toString());
                 break;
             case Constances.DESC:
-                item.setDesc(builder.toString());
+//                item.setDesc(builder.toString());
                 //24h
 
 //                desc24h(item);
@@ -85,16 +88,24 @@ public class XMLParser extends DefaultHandler {
     }
 
     private void descGoogleNews() {
+
         String s = "<p>";
         String value = builder.toString();
-        String value1;
-        int index = value.indexOf(s) + s.length();
-        value1 = value.substring(index);
-        String desc = value1.substring(0, value1.indexOf("</p>"));
-//        item.setDesc("123");
-        item.setDesc(desc);
 
-//        item.setDesc(desc);
+        int i = value.indexOf(s);
+
+        if(i>=0){
+            String value1;
+            int index = value.indexOf(s) + s.length();
+            value1 = value.substring(index);
+            String desc = value1.substring(0, value1.indexOf("</p>"));
+//        item.setDesc("123");
+            item.setDesc(desc);
+        }else {
+            item.setDesc("Description.");
+        }
+
+
     }
 
 
